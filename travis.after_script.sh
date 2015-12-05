@@ -23,6 +23,11 @@
 
 # Dev note: Do not use `-x` to verbosely echo the commands, as this will leak the Trac user password.
 
+CUSTOM_SCRIPT_DIR=/tmp/wp-github-pull-request-travis-ci-trac-sync
+if [[ ! -e "$CUSTOM_SCRIPT_DIR" ]]; then
+	git clone https://github.com/xwp/wp-github-pull-request-travis-ci-trac-sync.git "$CUSTOM_SCRIPT_DIR"
+fi
+
 npm install -g travis-after-all
 AFTER_ALL_EXIT_CODE=0
 if ! travis-after-all; then

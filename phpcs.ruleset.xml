@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<ruleset name="WordPress Core and Docs">
+
+	<rule ref="WordPress-Core" />
+	<rule ref="WordPress-Docs" />
+
+</ruleset>
