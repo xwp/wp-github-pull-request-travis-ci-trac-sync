@@ -41,6 +41,11 @@ else
 	return 0
 fi
 
+if [[ "$TRAVIS_JOB_NUMBER" != *.1 ]]; then
+	echo "Skipping Trac patch for job $TRAVIS_JOB_NUMBER. Only upload for first job."
+	return 0
+fi
+
 BRANCH_HEAD_COMMIT="$( sed "s/.*\.\.\.//" <<< "$TRAVIS_COMMIT_RANGE" )"
 BRANCH_PARENT_COMMIT="$( git rev-list --boundary $(git rev-parse --abbrev-ref $BRANCH_HEAD_COMMIT)...$TRAVIS_BRANCH | grep ^- | cut -c2- | head -n1 )"
 
