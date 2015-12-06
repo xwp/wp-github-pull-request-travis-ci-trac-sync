@@ -14,19 +14,19 @@ else
 	find . -type f | sed 's:^\.//*::' > /tmp/scope
 fi
 
-echo "Modified PHP files:"
+echo "# PHP diffs:"
 cat /tmp/scope | grep -E '\.php(:|$)' | tee /tmp/scope-php
 
-echo "Modified JS files:"
+echo "# JS diffs:"
 cat /tmp/scope | grep -E '\.(js|json|jshintrc)(:|$)' | tee /tmp/scope-js
 
-echo "Modified CSS files:"
+echo "# CSS diffs:"
 cat /tmp/scope | grep -E '\.(css|scss)(:|$)' | tee /tmp/scope-scss
 
-echo "Modified XML files:"
+echo "# XML diffs:"
 cat /tmp/scope | grep -E '\.(xml|svg|xml.dist)(:|$)' | tee /tmp/scope-xml
 
-echo "Modified YML files:"
+echo "# YML diffs:"
 cat /tmp/scope | grep -E '\.(yml|)(:|$)' | tee /tmp/scope-yml
 
 if [[ "$TRAVIS_PULL_REQUEST" != 'false' ]] && [[ "$WP_TRAVISCI" == 'travis:phpunit' ]] && [[ $( wc -l < /tmp/scope-php ) == 0 ]]; then
