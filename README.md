@@ -14,8 +14,12 @@ open an intra-repo pull request (while closing the original inter-repo pull requ
 1. Clone the `develop.git.wordpress.org` repo onto GitHub and enable Travis CI for it. See instructions in [Contributing to WordPress Core via GitHub](https://make.xwp.co/2015/10/29/contributing-to-wordpress-core-via-github/).
 2. Create a bot user on WordPress.org (e.g. `xwp-bot`) and request that the `XML_RPC` privilege be granted for that user.
 3. Ensure the patch from Trac [#34694](https://core.trac.wordpress.org/ticket/34694) is applied to WordPress Core; if not already upstreamed, make it the first commit to each feature branch.
-4. Edit the Travis CI settings for your WordPress GitHub clone to add an environment variable for `WP_TRAVISCI_CUSTOM_AFTER_SCRIPT_SRC` pointing to  https://raw.githubusercontent.com/xwp/wp-github-pull-request-travis-ci-trac-sync/master/travis.after_script.sh
-5. Also edit the Travis CI settings for your WordPress GitHub to define environment variables for `WPORG_USERNAME` and `WPORG_PASSWORD`. Make sure that the latter is added with “Display value in build log” _off_.
+4. Edit the Travis CI settings for your WordPress GitHub clone to add the following environment variables:
+ * `WP_TRAVISCI_CUSTOM_BEFORE_INSTALL_SRC`: https://raw.githubusercontent.com/xwp/wp-github-pull-request-travis-ci-trac-sync/master/travis.before_install.sh
+ * `WP_TRAVISCI_CUSTOM_SCRIPT_SRC`: https://raw.githubusercontent.com/xwp/wp-github-pull-request-travis-ci-trac-sync/master/travis.script.sh
+ * `WP_TRAVISCI_CUSTOM_AFTER_SCRIPT_SRC`: https://raw.githubusercontent.com/xwp/wp-github-pull-request-travis-ci-trac-sync/master/travis.after_script.sh
+ * `WPORG_USERNAME`: Use the Trac bot user you created.
+ * `WPORG_PASSWORD`: Use password for Trac bot user, and make sure added with “Display value in build log” _off_.
 
 For more information, see [Streamlining Contributions to WordPress Core via GitHub](https://make.xwp.co/2015/12/05/streamlining-contributions-to-wordpress-core-via-github/).
 
@@ -33,6 +37,8 @@ As a bonus, the changes in the pull request will also have the following checks 
 * Modified PHP files will be checked for syntax errors.
 * PHP changes will be checked with PHP_CodeSniffer against the `WordPress-Core` and `WordPress-Docs` standards.
 * JS changes will be checked with JSCS against the `wordpress` preset.
+
+Note that if there are no PHP files modified in a pull request, the *PHPUnit tests will be _skipped_ altogether*, drastically speeding up the build time.
 
 ## Background
 

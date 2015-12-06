@@ -13,6 +13,7 @@ function remove_diff_range {
 
 if [[ $WP_TRAVISCI == "travis:phpunit" ]]; then
 	# Check for PHP syntax errors (we do this here during travis:phpunit because different PHP versions are available)
+	echo "## PHP syntax linting"
 	for php_file in $( cat /tmp/scope-php | remove_diff_range ); do
 		php -lf "$php_file"
 	done
