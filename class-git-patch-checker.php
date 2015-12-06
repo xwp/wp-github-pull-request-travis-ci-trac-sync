@@ -36,7 +36,7 @@ class Git_Patch_Checker {
 				}
 				$start_line = intval( $matches['line_number'] );
 				$end_line = intval( $matches['line_number'] ) + intval( $matches['line_count'] );
-				$file_path = $matches['file_path'];
+				$file_path = $current_file_path;
 				$ranges[] = compact( 'file_path', 'start_line', 'end_line' );
 			}
 		}
