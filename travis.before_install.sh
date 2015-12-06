@@ -13,11 +13,20 @@ else
 	find . -type f | sed 's:^\.//*::' > /tmp/scope
 fi
 
-cat /tmp/scope | grep -E '\.php(:|$)' > /tmp/scope-php
-cat /tmp/scope | grep -E '\.(js|json|jshintrc)(:|$)' > /tmp/scope-js
-cat /tmp/scope | grep -E '\.(css|scss)(:|$)' > /tmp/scope-scss
-cat /tmp/scope | grep -E '\.(xml|svg|xml.dist)(:|$)' > /tmp/scope-xml
-cat /tmp/scope | grep -E '\.(yml|)(:|$)' > /tmp/scope-yml
+echo "Modified PHP files:"
+cat /tmp/scope | grep -E '\.php(:|$)' | tee /tmp/scope-php
+
+echo "Modified JS files:"
+cat /tmp/scope | grep -E '\.(js|json|jshintrc)(:|$)' | tee /tmp/scope-js
+
+echo "Modified CSS files:"
+cat /tmp/scope | grep -E '\.(css|scss)(:|$)' | tee /tmp/scope-scss
+
+echo "Modified XML files:"
+cat /tmp/scope | grep -E '\.(xml|svg|xml.dist)(:|$)' | tee /tmp/scope-xml
+
+echo "Modified YML files:"
+cat /tmp/scope | grep -E '\.(yml|)(:|$)' | tee /tmp/scope-yml
 
 if [[ "$TRAVIS_PULL_REQUEST" != 'false' ]] && [[ "$WP_TRAVISCI" == 'travis:phpunit' ]] && [[ $( wc -l < /tmp/scope-php ) == 0 ]]; then
 	echo "Canceling phpunit and PHP syntax check job because no changes to PHP files on branch"
