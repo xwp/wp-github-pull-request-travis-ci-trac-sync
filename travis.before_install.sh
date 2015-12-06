@@ -7,6 +7,7 @@ fi
 
 if [[ "$TRAVIS_PULL_REQUEST" != 'false' ]]; then
 	# Include only the files added/modified in scope to check.
+	# @todo If it is NOT a pull request, we could use the last stable branch instead of $TRAVIS_BRANCH.
 	git diff --diff-filter=AM --no-prefix --unified=0 $TRAVIS_BRANCH...$TRAVIS_COMMIT -- . | php "$CUSTOM_SCRIPT_DIR/parse-diff-ranges.php" > /tmp/scope
 else
 	# Include all files in repo in scope to check.

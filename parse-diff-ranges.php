@@ -7,7 +7,7 @@
  * @package wordpress
  */
 
-require_once __DIR__ . '/class-git-patch-checker.php';
+require_once dirname( __FILE__ ) . '/class-git-patch-checker.php';
 
 $patch_checker = new Git_Patch_Checker();
 $ranges = $patch_checker->parse_diff_ranges( file_get_contents( 'php://stdin' ) );
