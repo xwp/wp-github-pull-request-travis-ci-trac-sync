@@ -28,7 +28,11 @@ Once configured, a developer with write access to the GitHub repo can contribute
 2. Open pull request to `master`; this must be an _internal_ (intra-repo) pull request, not from a fork (inter-repo).
 3. Watch Travis CI run its tests, and when completed look at Trac to see the patch uploaded.
 
-As a bonus, the changes in the pull request will also be checked with PHP_CodeSniffer against the `WordPress-Core` and `WordPress-Docs` standards. Likewise, the JS changes will be checked with JSCS against the `wordpress` preset.
+As a bonus, the changes in the pull request will also have the following checks run:
+
+* Modified PHP files will be checked for syntax errors.
+* PHP changes will be checked with PHP_CodeSniffer against the `WordPress-Core` and `WordPress-Docs` standards.
+* JS changes will be checked with JSCS against the `wordpress` preset.
 
 ## Background
 
