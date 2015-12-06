@@ -21,7 +21,7 @@ cat /tmp/scope | grep -E '\.(yml|)(:|$)' > /tmp/scope-yml
 
 if [[ "$TRAVIS_PULL_REQUEST" != 'false' ]] && [[ "$WP_TRAVISCI" == 'travis:phpunit' ]] && [[ $( wc -l < /tmp/scope-php ) == 0 ]]; then
 	echo "Canceling phpunit and PHP syntax check job because no changes to PHP files on branch"
-	travis cancel "$TRAVIS_JOB_NUMBER"
+	# @todo travis cancel "$TRAVIS_JOB_NUMBER"
 	exit 0
 fi
 
