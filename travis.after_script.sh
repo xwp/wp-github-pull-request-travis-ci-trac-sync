@@ -162,6 +162,10 @@ echo "XML-RPC Request:"
 cat /tmp/xml-rpc-request
 echo
 
+# @todo TEMPORARY Aborting patch upload
+echo "TEMPORARY ABORT PATCH UPLOAD"
+return 0
+
 curl -u "${WPORG_USERNAME}:${WPORG_PASSWORD}" -s -H "Content-Type: application/xml; charset=utf-8" --data "@/tmp/xml-rpc-request" "https://${TRAC_SUBDOMAIN}.trac.wordpress.org/login/xmlrpc" > /tmp/xml-rpc-response
 
 if grep -qs '<name>faultCode</name>' /tmp/xml-rpc-response; then
