@@ -42,9 +42,11 @@ Note that if there are no PHP files modified in a pull request, the *PHPUnit tes
 
 ## Background
 
-For an the initial post that describes the approach, as linked above, see [Streamlining Contributions to WordPress Core via GitHub](https://make.xwp.co/2015/12/05/streamlining-contributions-to-wordpress-core-via-github/).
+For the initial post that describes the approach, as linked above, see [Streamlining Contributions to WordPress Core via GitHub](https://make.xwp.co/2015/12/05/streamlining-contributions-to-wordpress-core-via-github/).
 
 For a prior post describing the manual workflow that is being streamlined here, also as linked above, see [Contributing to WordPress Core via GitHub](https://make.xwp.co/2015/10/29/contributing-to-wordpress-core-via-github/).
+
+See also the WordPress Trac [#34694](https://core.trac.wordpress.org/ticket/34694): Facilitate automated testing in context of pull requests and diffs.
 
 ## Credits
 
