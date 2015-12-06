@@ -38,7 +38,7 @@ As a bonus, the changes in the pull request will also have the following checks 
 * PHP changes will be checked with PHP_CodeSniffer against the `WordPress-Core` and `WordPress-Docs` standards.
 * JS changes will be checked with JSCS against the `wordpress` preset.
 
-Note that if there are no PHP files modified in a pull request, the *PHPUnit tests will be _skipped_ altogether*, drastically speeding up the build time.
+Note that if there are no PHP files modified in a pull request, the *PHPUnit tests will be skipped altogether*, _drastically_ speeding up the build time.
 
 ## Background
 
